@@ -7,7 +7,7 @@
 
 -- ----------------------------------------------------------------------------
 -- |
--- Module      :  Data.Map
+-- Module      :  Data.HtlSet
 -- Copyright   :  (c) Zoltan Kelemen 2017
 -- License     :  BSD-style
 -- Maintainer  :  kelemzol@elte.hu
@@ -117,7 +117,7 @@ existTypeOfP _ (HtsSet hs) = case M.lookup (typeRep (Proxy :: Proxy a)) hs of
     (Just _) -> True
     _ -> False
 
--- | Helper heterogeneous list for comfortable HtsSet building (with append)
+-- | Helper heterogeneous list for comfortable HtsSet building (with append and fill)
 -- > let hs = fill ("a" :+ 'c' :+ True :+ ())
 -- > lookup hs == Just 'c'
 -- > use () to close the list
