@@ -41,6 +41,11 @@ data CastBox = forall a. (Typeable a) => CastBox { unBox :: a }
 
 newtype HtsSet = HtsSet { unHS :: M.Map TypeRep CastBox }
 
+instance Monoid HtsSet where
+  mempty = empty
+
+instance Semigroup HtsSet where
+  HtsSet a <> HtsSet b = HtsSet $ a <> b
 
 mapCastBox :: forall a. Typeable a => (a -> a) -> CastBox -> CastBox
 mapCastBox f o@(CastBox e) = case cast e of
